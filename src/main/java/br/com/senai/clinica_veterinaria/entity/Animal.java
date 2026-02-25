@@ -15,7 +15,7 @@ public class Animal {
     private String nome;
     private String especie;
     private String raca;
-    private int idade;
+    private Integer idade;
     private String infos_medicas;
     private Boolean status;
     public Long getId() {
@@ -42,10 +42,10 @@ public class Animal {
     public void setRaca(String raca) {
         this.raca = raca;
     }
-    public int getIdade() {
+    public Integer getIdade() {
         return idade;
     }
-    public void setIdade(int idade) {
+    public void setIdade(Integer idade) {
         this.idade = idade;
     }
     public String getInfos_medicas() {
@@ -61,4 +61,5 @@ public class Animal {
         this.status = status;
     }
 
+   
 }

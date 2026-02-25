@@ -6,15 +6,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Dono {
-    
+public class Veterinario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
     private String nome;
-    private Integer cpf;
-    private Boolean status;
+    private String crmv;
+    private String especializacao;
+    private Integer jornada;
 
     public Long getId() {
         return id;
@@ -28,19 +29,24 @@ public class Dono {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public Integer getCpf() {
-        return cpf;
+    public String getCrmv() {
+        return crmv;
     }
-    public void setCpf(Integer cpf) {
-        this.cpf = cpf;
+    public void setCrmv(String crmv) {
+        this.crmv = crmv;
     }
-    public Boolean getStatus() {
-        return status;
+    public String getEspecializacao() {
+        return especializacao;
     }
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setEspecializacao(String especializacao) {
+        this.especializacao = especializacao;
     }
-
+    public Integer getJornada() {
+        return jornada;
+    }
+    public void setJornada(Integer jornada) {
+        this.jornada = jornada;
+    }
+ 
     
-   
 }
