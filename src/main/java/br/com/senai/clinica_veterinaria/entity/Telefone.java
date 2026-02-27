@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Telefone {
@@ -12,6 +14,8 @@ public class Telefone {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    @NotNull(message = "Precisa de um numero de telefone")
+    @Size(min = 10, max = 11, message = "Minimo de 10 digitos")
     private Integer numero;
 
     public Long getId() {

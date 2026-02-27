@@ -4,6 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Veterinario {
@@ -12,9 +16,22 @@ public class Veterinario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+     @NotBlank(message = "Precisa de um nome")
     private String nome;
+
+     @NotNull(message = "Precisa declarar a idade")
+     @Size(min = 1, max = 3, message = "Mínimo de 1 e máximo de 3 digitos")
+    private Integer idade;
+
+    @NotNull(message = "Precisa informar o n° de CRMV")
+    @Size(min = 13, max = 13, message = "Mínimo de 1 e máximo de 3 digitos")
     private String crmv;
+
+     @NotBlank(message = "Precisa informar a Especialização")
     private String especializacao;
+
+    @NotNull(message = "Precisa informar o n° de horas da jornada")
+    @PositiveOrZero
     private Integer jornada;
 
     public Long getId() {

@@ -1,9 +1,14 @@
 package br.com.senai.clinica_veterinaria.entity;
 
+import org.springframework.data.repository.NoRepositoryBean;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Animal {
@@ -12,12 +17,26 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    @NotBlank(message = "Precisa de um nome")
     private String nome;
+
+    @NotBlank(message = "Precisa declarar a espécie do animal")
     private String especie;
+
+    @NotBlank(message = "Precisa declarar a raça do animal")
     private String raca;
+
+    @NotNull(message = "Precisa definir a idade do animal")
+    @Size(min = 1, max = 2, message = "Mínimo de 1 e máximo de 3 digitos")
     private Integer idade;
+
+    @NotBlank(message = "Precisa registrar informacoes médicas")
     private String infos_medicas;
+    
+    @NotNull(message =  "Precisa definir o status")
     private Boolean status;
+
+
     public Long getId() {
         return id;
     }

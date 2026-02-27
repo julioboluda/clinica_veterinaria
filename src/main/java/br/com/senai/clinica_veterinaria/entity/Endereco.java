@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Endereco {
@@ -12,15 +15,34 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+     @NotNull(message = "Precisa informar o cep")
+     @Size(min = 8, max = 8, message = "Numero de 8 digitos")
     private Integer cep;
+    
+    @NotBlank(message = "Precisa informar o logradouro")
     private String logradouro;
+    
+    @NotBlank(message = "Precisa informar a localidade")
     private String localidade;
+    
+    @NotBlank(message = "Precisa informar a Unidade Federativa")
     private String uf;
+    
+    @NotBlank(message = "Precisa informar o bairro")
     private String bairro;
+    
+    @NotNull(message = "Precisa informar o n°")
     private Integer numero;
+        
     private String complemento;
+    
+    @NotBlank(message = "Precisa informar uma referência")
     private String referencia;
+    
+    @NotBlank(message = "Precisa informar o Status")
     private Boolean principal;
+    
+    
     public Long getId() {
         return id;
     }

@@ -15,12 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.senai.clinica_veterinaria.entity.Animal;
 import br.com.senai.clinica_veterinaria.exception.Response;
 import br.com.senai.clinica_veterinaria.repository.AnimalRepository;
-//  private String nome;
-//     private String especie;
-//     private String raca;
-//     private int idade;
-//     private String infos_medicas;
-//     private Boolean status;
 
 
 @RestController

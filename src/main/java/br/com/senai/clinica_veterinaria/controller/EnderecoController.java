@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import br.com.senai.clinica_veterinaria.entity.Endereco;
 import br.com.senai.clinica_veterinaria.entity.Endereco;
 import br.com.senai.clinica_veterinaria.exception.Response;
 import br.com.senai.clinica_veterinaria.repository.EnderecoRepository;
@@ -33,15 +31,7 @@ public class EnderecoController {
     public List<Endereco> retornaTodos() {
         return repository.findAll();
     }
-    // private Integer cep;
-    // private String logradouro;
-    // private String localidade;
-    // private String uf;
-    // private String bairro;
-    // private Integer numero;
-    // private String complemento;
-    // private String referencia;
-    // private Boolean principal;
+   
     @PutMapping("/{id}")
     public Response atualizaEndereco(@PathVariable Long id, @RequestBody Endereco entity) {
 
