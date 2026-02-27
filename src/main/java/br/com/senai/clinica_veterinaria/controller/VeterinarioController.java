@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.senai.clinica_veterinaria.entity.Veterinario;
 import br.com.senai.clinica_veterinaria.exception.Response;
 import br.com.senai.clinica_veterinaria.repository.VeterinarioRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/veterinario")
@@ -22,7 +23,7 @@ public class VeterinarioController {
     private VeterinarioRepository repository;
 
     @PostMapping
-    public Response agendaVeterinario(@RequestBody Veterinario entity) {
+    public Response agendaVeterinario(@Valid @RequestBody Veterinario entity) {
         repository.save(entity);
         return new Response(201, "Veterinario Agendada"); 
     }

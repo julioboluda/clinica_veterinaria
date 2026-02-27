@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.senai.clinica_veterinaria.entity.Animal;
 import br.com.senai.clinica_veterinaria.exception.Response;
 import br.com.senai.clinica_veterinaria.repository.AnimalRepository;
+import jakarta.validation.Valid;
 
 
 @RestController
@@ -24,7 +25,7 @@ public class AnimalController {
     private AnimalRepository repository;
 
     @PostMapping
-    public Response cadastraNomeAnimal(@RequestBody Animal entity) {
+    public Response cadastraNomeAnimal(@Valid @RequestBody Animal entity) {
         repository.save(entity);
         return new Response(201, "Animal Registrado"); 
     }

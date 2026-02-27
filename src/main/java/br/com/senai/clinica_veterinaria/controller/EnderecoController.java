@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.senai.clinica_veterinaria.entity.Endereco;
 import br.com.senai.clinica_veterinaria.exception.Response;
 import br.com.senai.clinica_veterinaria.repository.EnderecoRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/endereco")
@@ -22,7 +23,7 @@ public class EnderecoController {
     private EnderecoRepository repository;
 
     @PostMapping
-    public Response agendaEndereco(@RequestBody Endereco entity) {
+    public Response agendaEndereco(@Valid @RequestBody Endereco entity) {
         repository.save(entity);
         return new Response(201, "Endereco Agendada"); 
     }

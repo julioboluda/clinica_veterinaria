@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.senai.clinica_veterinaria.entity.Dono;
 import br.com.senai.clinica_veterinaria.exception.Response;
 import br.com.senai.clinica_veterinaria.repository.DonoRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/dono")
@@ -23,7 +24,7 @@ public class DonoController {
     private DonoRepository repository;
 
     @PostMapping
-    public Response agendaDono(@RequestBody Dono entity) {
+    public Response agendaDono(@Valid @RequestBody Dono entity) {
         repository.save(entity);
         return new Response(201, "Dono Agendada"); 
     }

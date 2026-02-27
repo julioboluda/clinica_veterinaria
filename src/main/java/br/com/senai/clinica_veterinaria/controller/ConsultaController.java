@@ -16,6 +16,7 @@ import br.com.senai.clinica_veterinaria.entity.Consulta;
 import br.com.senai.clinica_veterinaria.exception.Response;
 import br.com.senai.clinica_veterinaria.repository.ConsultaRepository;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/consulta")
@@ -24,7 +25,7 @@ public class ConsultaController {
     private ConsultaRepository repository;
 
     @PostMapping
-    public Response agendaConsulta(@RequestBody Consulta entity) {
+    public Response agendaConsulta(@Valid @RequestBody Consulta entity) {
         repository.save(entity);
         return new Response(201, "Consulta Agendada"); 
     }

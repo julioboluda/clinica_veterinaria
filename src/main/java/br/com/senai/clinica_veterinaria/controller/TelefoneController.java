@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.senai.clinica_veterinaria.entity.Telefone;
 import br.com.senai.clinica_veterinaria.exception.Response;
 import br.com.senai.clinica_veterinaria.repository.TelefoneRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/telefone")
@@ -22,7 +23,7 @@ public class TelefoneController {
     private TelefoneRepository repository;
 
     @PostMapping
-    public Response agendaTelefone(@RequestBody Telefone entity) {
+    public Response agendaTelefone(@Valid @RequestBody Telefone entity) {
         repository.save(entity);
         return new Response(201, "Telefone Agendada"); 
     }
