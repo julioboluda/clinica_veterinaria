@@ -33,6 +33,16 @@ public class Telefone {
     public void setNumero(Integer numero) {
         this.numero = numero;
     }
+
+    public Object getTelefone() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTelefone'");
+    }
+
+    public void setTelefone(Object telefone) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setTelefone'");
+    }
     
     
 }

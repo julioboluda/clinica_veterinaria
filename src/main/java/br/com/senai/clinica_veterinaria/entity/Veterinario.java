@@ -16,12 +16,8 @@ public class Veterinario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-     @NotBlank(message = "Precisa de um nome")
+    @NotBlank(message = "Precisa de um nome")
     private String nome;
-
-     @NotNull(message = "Precisa declarar a idade")
-     @Size(min = 1, max = 3, message = "Mínimo de 1 e máximo de 3 digitos")
-    private Integer idade;
 
     @NotNull(message = "Precisa informar o n° de CRMV")
     @Size(min = 13, max = 13, message = "Mínimo de 1 e máximo de 3 digitos")
