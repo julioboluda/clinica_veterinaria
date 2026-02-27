@@ -1,6 +1,6 @@
 package br.com.senai.clinica_veterinaria.entity;
 
-import org.springframework.data.repository.NoRepositoryBean;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
