@@ -27,7 +27,6 @@ public class EnderecoController {
         repository.save(entity);
         return new Response(201, "Endereco Agendada"); //Um novo registro foi criado com sucesso no banco de dados 
         }
-    }
     
     @GetMapping
     public List<Endereco> retornaTodos() {
@@ -39,7 +38,7 @@ public class EnderecoController {
 
         if (!repository.existsById(id)) {
             return new Response(204, "Endereço não encontrado"); //Um registro não foi encontrado no banco de dados
-
+        }
         Endereco enderecoAntigo = repository.findById(id).get();
 
         if (entity.getCep() != null) {
@@ -70,9 +69,10 @@ public class EnderecoController {
             enderecoAntigo.setPrincipal(entity.getPrincipal());
         }
 
-             repository.save(enderecoAntigo);
+        repository.save(enderecoAntigo);
 
-        return new Response(200, "Endereco Atualizado!"); //sucesso na busca ou sucesso na alteração
+        return new Response(200, "Endereco Atualizado!");//sucesso na busca ou sucesso na alteração
+    
     }
 
 

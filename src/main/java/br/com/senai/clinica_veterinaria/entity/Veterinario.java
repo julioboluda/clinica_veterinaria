@@ -1,5 +1,6 @@
 package br.com.senai.clinica_veterinaria.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,14 +22,18 @@ public class Veterinario {
 
     @NotNull(message = "Precisa informar o n° de CRMV")
     @Size(min = 13, max = 13, message = "Mínimo de 1 e máximo de 3 digitos")
+    @Column(unique = true)
     private String crmv;
 
      @NotBlank(message = "Precisa informar a Especialização")
     private String especializacao;
 
+
     @NotNull(message = "Precisa informar o n° de horas da jornada")
     @PositiveOrZero
     private Integer jornada;
+
+   
 
     public Long getId() {
         return id;
@@ -59,7 +64,7 @@ public class Veterinario {
     }
     public void setJornada(Integer jornada) {
         this.jornada = jornada;
-    }
+        }
  
     
 }

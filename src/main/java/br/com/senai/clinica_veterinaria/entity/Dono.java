@@ -1,9 +1,11 @@
 package br.com.senai.clinica_veterinaria.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -20,10 +22,14 @@ public class Dono {
 
     @NotNull(message = "Precisa de um numero de cpf válido")
     @Size(min = 11, message = "Minimo de 11 digitos")
-    private Integer cpf;
+    @Column(unique = true)
+    private String cpf;
 
     @NotNull(message = "Precisa definir o status")
     private Boolean status;
+
+    @OneToMany(mappedBy = "dono")
+    private List<telefone>
 
     public Long getId() {
         return id;

@@ -2,6 +2,8 @@ package br.com.senai.clinica_veterinaria.controller;
 
 import java.util.List;
 
+import javax.swing.RepaintManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +28,13 @@ public class VeterinarioController {
 
     @PostMapping
     public Response agendaVeterinario(@Valid @RequestBody Veterinario entity) {
+
+        boolean crmvJaexiste = repository.existsByCrmv(entity.getCrmv());
+
+        if (crmvJaexiste) {
+            return new Response(409, "Ja existe um dono com esse crmv");
+        }
+
         repository.save(entity);
         return new Response(201, "Veterinario Agendada"); //Um novo registro foi criado com sucesso no banco de dados
     }
@@ -38,6 +47,7 @@ public class VeterinarioController {
      @PutMapping("/{id}")
     public Response atualizaVeterinario(@PathVariable Long id, @RequestBody Veterinario entity) {
 
+        
         if (!repository.existsById(id)) {
             return new Response(204, "Dono não encontrado"); //Um registro não foi encontrado no banco de dados
         }

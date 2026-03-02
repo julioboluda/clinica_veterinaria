@@ -36,6 +36,7 @@ public class Animal {
     @NotNull(message =  "Precisa definir o status")
     private Boolean status;
 
+    
 
     public Long getId() {
         return id;

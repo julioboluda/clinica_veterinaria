@@ -25,6 +25,13 @@ public class DonoController {
 
     @PostMapping
     public Response agendaDono(@Valid @RequestBody Dono entity) {
+        boolean cpfJaExiste = repository.ExistsByCpf(entity.getCpf());
+
+        if (cpfJaExiste) {
+            return new Response(409, "Ja existe um dono com esse cpf");
+        }
+        
+        
         repository.save(entity);
         return new Response(201, "Dono Agendada"); //Um novo registro foi criado com sucesso no banco de dados
     }
