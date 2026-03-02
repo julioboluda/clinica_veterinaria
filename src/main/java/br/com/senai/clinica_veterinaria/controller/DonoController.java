@@ -26,7 +26,7 @@ public class DonoController {
     @PostMapping
     public Response agendaDono(@Valid @RequestBody Dono entity) {
         repository.save(entity);
-        return new Response(201, "Dono Agendada"); 
+        return new Response(201, "Dono Agendada"); //Um novo registro foi criado com sucesso no banco de dados
     }
     
     @GetMapping
@@ -38,7 +38,7 @@ public class DonoController {
     public Response atualizaDono(@PathVariable Long id, @RequestBody Dono entity) {
 
         if (!repository.existsById(id)) {
-            return new Response(201, "Dono não encontrado");
+            return new Response(204, "Dono não encontrado");  //Um registro não foi encontrado no banco de dados
         }
 
         Dono donoAntigo = repository.findById(id).get();
@@ -55,18 +55,18 @@ public class DonoController {
         
              repository.save(donoAntigo);
 
-        return new Response(200, "Dono Atualizado!");
+        return new Response(200, "Dono Atualizado!"); //sucesso na busca ou sucesso na alteração
     }
 
 
     @DeleteMapping("/{id}")
     public Response deleteAnimal(@PathVariable Long id) {
         if (!repository.existsById(id)) {
-            return new Response(404, "Dono Não Encontrada");
+            return new Response(404, "Dono Não Encontrada"); //O recurso com o ID informado não existe ou a URL digitada está incorreta.
         }
 
         repository.deleteById(id);
 
-       return new Response(204, "Dono Deletada");
+       return new Response(204, "Dono Deletada"); //Um registro não foi encontrado no banco de dados
     }
 }

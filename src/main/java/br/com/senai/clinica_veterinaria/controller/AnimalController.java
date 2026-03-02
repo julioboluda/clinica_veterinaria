@@ -27,7 +27,7 @@ public class AnimalController {
     @PostMapping
     public Response cadastraNomeAnimal(@Valid @RequestBody Animal entity) {
         repository.save(entity);
-        return new Response(201, "Animal Registrado"); 
+        return new Response(201, "Animal Registrado"); //Um novo registro foi criado com sucesso no banco de dados
     }
     
     @GetMapping
@@ -39,7 +39,7 @@ public class AnimalController {
     public Response atualizaProduto(@PathVariable Long id, @RequestBody Animal entity) {
 
         if (!repository.existsById(id)) {
-            return new Response(201, "Produto não encontrado");
+            return new Response(204, "Produto não encontrado"); //Um registro não foi encontrado no banco de dados
         }
 
         Animal AnimalAntigo = repository.findById(id).get();
@@ -65,18 +65,18 @@ public class AnimalController {
 
              repository.save(AnimalAntigo);
 
-        return new Response(200, "Nome Animal Atualizado!");
+        return new Response(200, "Nome Animal Atualizado!"); //sucesso na busca ou sucesso na alteração
     }
 
 
     @DeleteMapping("/{id}")
     public Response deleteAnimal(@PathVariable Long id) {
         if (!repository.existsById(id)) {
-            return new Response(404, "Animal Não Encontrado");
+            return new Response(404, "Animal Não Encontrado"); //O recurso com o ID informado não existe ou a URL digitada está incorreta.
         }
 
         repository.deleteById(id);
 
-       return new Response(204, "Animal Registro Deletado");
+       return new Response(204, "Animal Registro Deletado"); //Um registro não foi encontrado no banco de dados
     }
 }

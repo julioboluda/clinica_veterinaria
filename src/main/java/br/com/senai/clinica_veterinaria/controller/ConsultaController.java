@@ -25,7 +25,7 @@ public class ConsultaController {
     @PostMapping
     public Response agendaConsulta(@Valid @RequestBody Consulta entity) {
         repository.save(entity);
-        return new Response(201, "Consulta Agendada"); 
+        return new Response(201, "Consulta Agendada"); //Um novo registro foi criado com sucesso no banco de dados
     }
     
     @GetMapping
@@ -37,7 +37,7 @@ public class ConsultaController {
     public Response atualizaData_hora(@PathVariable Long id, @RequestBody Consulta entity) {
 
         if (!repository.existsById(id)) {
-            return new Response(201, "Consulta não encontrada");
+            return new Response(204, "Consulta não encontrada"); //Um registro não foi encontrado no banco de dados
         }
 
         Consulta ConsultaAntigo = repository.findById(id).get();
@@ -48,18 +48,18 @@ public class ConsultaController {
         
              repository.save(ConsultaAntigo);
 
-        return new Response(200, "COnsulta Atualizada!");
+        return new Response(200, "COnsulta Atualizada!"); //sucesso na busca ou sucesso na alteração
     }
 
 
     @DeleteMapping("/{id}")
     public Response deleteAnimal(@PathVariable Long id) {
         if (!repository.existsById(id)) {
-            return new Response(404, "Consulta Não Encontrada");
+            return new Response(404, "Consulta Não Encontrada"); //O recurso com o ID informado não existe ou a URL digitada está incorreta.
         }
 
         repository.deleteById(id);
 
-       return new Response(204, "Consulta Deletada");
+       return new Response(204, "Consulta Deletada"); //Um registro não foi encontrado no banco de dados
     }
 }

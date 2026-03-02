@@ -25,7 +25,8 @@ public class EnderecoController {
     @PostMapping
     public Response agendaEndereco(@Valid @RequestBody Endereco entity) {
         repository.save(entity);
-        return new Response(201, "Endereco Agendada"); 
+        return new Response(201, "Endereco Agendada"); //Um novo registro foi criado com sucesso no banco de dados 
+        }
     }
     
     @GetMapping
@@ -37,8 +38,7 @@ public class EnderecoController {
     public Response atualizaEndereco(@PathVariable Long id, @RequestBody Endereco entity) {
 
         if (!repository.existsById(id)) {
-            return new Response(201, "Endereço não encontrado");
-        }
+            return new Response(204, "Endereço não encontrado"); //Um registro não foi encontrado no banco de dados
 
         Endereco enderecoAntigo = repository.findById(id).get();
 
@@ -72,7 +72,7 @@ public class EnderecoController {
 
              repository.save(enderecoAntigo);
 
-        return new Response(200, "Endereco Atualizado!");
+        return new Response(200, "Endereco Atualizado!"); //sucesso na busca ou sucesso na alteração
     }
 
 
@@ -80,11 +80,11 @@ public class EnderecoController {
     @DeleteMapping("/{id}")
     public Response deleteEndereco(@PathVariable Long id) {
         if (!repository.existsById(id)) {
-            return new Response(404, "Endereco Não Encontrado");
+            return new Response(404, "Endereco Não Encontrado"); //O recurso com o ID informado não existe ou a URL digitada está incorreta.
         }
 
         repository.deleteById(id);
 
-       return new Response(204, "Endereco Deletado");
+       return new Response(204, "Endereco Deletado"); //Um registro não foi encontrado no banco de dados
     }
 }
