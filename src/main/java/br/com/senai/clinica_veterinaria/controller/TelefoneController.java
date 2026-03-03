@@ -27,7 +27,7 @@ public class TelefoneController {
     @PostMapping
     public Response agendaTelefone(@Valid @RequestBody Telefone entity) {
         repository.save(entity);
-        return new Response(201, "Telefone Agendada"); //Um novo registro foi criado com sucesso no banco de dados
+        return new Response(201, "Telefone registrado!"); //Um novo registro foi criado com sucesso no banco de dados
     }
     
     @GetMapping
@@ -39,7 +39,7 @@ public class TelefoneController {
     public Response atualizaTelefone(@PathVariable Long id, @RequestBody Telefone entity) {
 
         if (!repository.existsById(id)) {
-            return new Response(204, "Telefone não encontrado"); //Um registro não foi encontrado no banco de dados
+            return new Response(404, "Telefone não encontrado"); //Um registro não foi encontrado no banco de dados
         }
 
         Telefone telefoneAntigo = repository.findById(id).get();
@@ -50,18 +50,18 @@ public class TelefoneController {
             
              repository.save(telefoneAntigo);
 
-        return new Response(200, "Dono Atualizado!"); //sucesso na busca ou sucesso na alteração
+        return new Response(200, "Telefone Atualizado!"); //sucesso na busca ou sucesso na alteração
     }
 
 
     @DeleteMapping("/{id}")
     public Response deleteAnimal(@PathVariable Long id) {
         if (!repository.existsById(id)) {
-            return new Response(404, "Telefone Não Encontrada"); //O recurso com o ID informado não existe ou a URL digitada está incorreta.
+            return new Response(404, "Telefone Não Encontrado"); //O recurso com o ID informado não existe ou a URL digitada está incorreta.
         }
 
         repository.deleteById(id);
 
-       return new Response(204, "Telefone Deletada"); //Um registro não foi encontrado no banco de dados
+       return new Response(204, "Telefone Deletado"); //Um registro não foi encontrado no banco de dados
     }
 }

@@ -32,7 +32,7 @@ public class VeterinarioController {
         boolean crmvJaexiste = repository.existsByCrmv(entity.getCrmv());
 
         if (crmvJaexiste) {
-            return new Response(409, "Ja existe um dono com esse crmv");
+            return new Response(409, "Ja existe um Veterinario com esse crmv");
         }
 
         repository.save(entity);
@@ -49,7 +49,7 @@ public class VeterinarioController {
 
         
         if (!repository.existsById(id)) {
-            return new Response(204, "Dono não encontrado"); //Um registro não foi encontrado no banco de dados
+            return new Response(404, "Veterinario não encontrado"); //Um registro não foi encontrado no banco de dados
         }
 
         Veterinario veterinarioAntigo = repository.findById(id).get();
@@ -69,18 +69,18 @@ public class VeterinarioController {
         
              repository.save(veterinarioAntigo);
 
-        return new Response(200, "Dono Atualizado!"); //sucesso na busca ou sucesso na alteração
+        return new Response(200, "Veterinario Atualizado!"); //sucesso na busca ou sucesso na alteração
     }
 
 
     @DeleteMapping("/{id}")
     public Response deleteAnimal(@PathVariable Long id) {
         if (!repository.existsById(id)) {
-            return new Response(404, "Veterinario Não Encontrada"); //O recurso com o ID informado não existe ou a URL digitada está incorreta.
+            return new Response(404, "Veterinario Não Encontrado"); //O recurso com o ID informado não existe ou a URL digitada está incorreta.
         }
 
         repository.deleteById(id);
 
-       return new Response(204, "Veterinario Deletada"); //Um registro não foi encontrado no banco de dados
+       return new Response(204, "Veterinario Deletado"); //Um registro não foi encontrado no banco de dados
     }
 }

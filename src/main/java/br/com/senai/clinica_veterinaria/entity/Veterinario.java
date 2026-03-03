@@ -20,7 +20,7 @@ public class Veterinario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @NotBlank(message = "Precisa de um nome")
+    @NotBlank(message = "Precisa informar um nome")
     private String nome;
 
     @NotNull(message = "Precisa informar o n° de CRMV")

@@ -33,7 +33,7 @@ public class DonoController {
         
         
         repository.save(entity);
-        return new Response(201, "Dono Agendada"); //Um novo registro foi criado com sucesso no banco de dados
+        return new Response(201, "Dono Registrado"); //Um novo registro foi criado com sucesso no banco de dados
     }
     
     @GetMapping
@@ -45,7 +45,7 @@ public class DonoController {
     public Response atualizaDono(@PathVariable Long id, @RequestBody Dono entity) {
 
         if (!repository.existsById(id)) {
-            return new Response(204, "Dono não encontrado");  //Um registro não foi encontrado no banco de dados
+            return new Response(404, "Dono não encontrado");  //Um registro não foi encontrado no banco de dados
         }
 
         Dono donoAntigo = repository.findById(id).get();

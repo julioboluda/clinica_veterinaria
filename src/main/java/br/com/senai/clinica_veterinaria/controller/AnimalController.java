@@ -39,7 +39,7 @@ public class AnimalController {
     public Response atualizaProduto(@PathVariable Long id, @RequestBody Animal entity) {
 
         if (!repository.existsById(id)) {
-            return new Response(204, "Produto não encontrado"); //Um registro não foi encontrado no banco de dados
+            return new Response(404, "Animal não encontrado"); //Um registro não foi encontrado no banco de dados
         }
 
         Animal AnimalAntigo = repository.findById(id).get();
@@ -77,6 +77,6 @@ public class AnimalController {
 
         repository.deleteById(id);
 
-       return new Response(204, "Animal Registro Deletado"); //Um registro não foi encontrado no banco de dados
+       return new Response(204, "Animal com Registro Deletado"); //Um registro não foi encontrado no banco de dados
     }
 }

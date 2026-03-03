@@ -37,7 +37,7 @@ public class ConsultaController {
     public Response atualizaData_hora(@PathVariable Long id, @RequestBody Consulta entity) {
 
         if (!repository.existsById(id)) {
-            return new Response(204, "Consulta não encontrada"); //Um registro não foi encontrado no banco de dados
+            return new Response(404, "Consulta não encontrada"); //Um registro não foi encontrado no banco de dados
         }
 
         Consulta ConsultaAntigo = repository.findById(id).get();
@@ -48,7 +48,7 @@ public class ConsultaController {
         
              repository.save(ConsultaAntigo);
 
-        return new Response(200, "COnsulta Atualizada!"); //sucesso na busca ou sucesso na alteração
+        return new Response(200, "Consulta Atualizada!"); //sucesso na busca ou sucesso na alteração
     }
 
 
