@@ -1,9 +1,14 @@
 package br.com.senai.clinica_veterinaria.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -42,7 +47,10 @@ public class Endereco {
     @NotBlank(message = "Precisa informar o Status")
     private Boolean principal;
     
-    
+    @ManyToOne
+    @JoinColumn(name = "fk_dono")
+    private Dono dono;
+       
     public Long getId() {
         return id;
     }

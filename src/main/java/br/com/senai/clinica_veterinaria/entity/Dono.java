@@ -1,5 +1,7 @@
 package br.com.senai.clinica_veterinaria.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,32 +31,54 @@ public class Dono {
     private Boolean status;
 
     @OneToMany(mappedBy = "dono")
-    private List<telefone>
+    private List<Telefone> telefones;
+
+    @OneToMany(mappedBy = "dono")
+    private List<Endereco> enderecos;
+
+    @OneToMany(mappedBy = "dono")
+    private List<Animal> animais;
 
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public Integer getCpf() {
+
+    public String getCpf() {
         return cpf;
     }
-    public void setCpf(Integer cpf) {
+
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
     public Boolean getStatus() {
         return status;
     }
+
     public void setStatus(Boolean status) {
         this.status = status;
     }
+
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
+    }
+
 
     
    

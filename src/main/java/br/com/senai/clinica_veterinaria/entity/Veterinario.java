@@ -1,10 +1,13 @@
 package br.com.senai.clinica_veterinaria.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -25,7 +28,7 @@ public class Veterinario {
     @Column(unique = true)
     private String crmv;
 
-     @NotBlank(message = "Precisa informar a Especialização")
+    @NotBlank(message = "Precisa informar a Especialização")
     private String especializacao;
 
 
@@ -33,7 +36,8 @@ public class Veterinario {
     @PositiveOrZero
     private Integer jornada;
 
-   
+    @OneToMany(mappedBy = "veterinario")
+    private List<VeterinariaConsulta> veterinarioconsultas;
 
     public Long getId() {
         return id;

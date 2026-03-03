@@ -28,4 +28,37 @@ private Consulta consulta;
 @NotBlank
 private String obsMEdicas;
 
+public Long getId() {
+    return id;
+}
+
+public void setId(Long id) {
+    this.id = id;
+}
+
+public Veterinario getVeterinario() {
+    return veterinario;
+}
+
+public void setVeterinario(Veterinario veterinario) {
+    this.veterinario = veterinario;
+}
+
+public Consulta getConsulta() {
+    return consulta;
+}
+
+public void setConsulta(Consulta consulta) {
+    this.consulta = consulta;
+}
+
+public String getObsMEdicas() {
+    return obsMEdicas;
+}
+
+public void setObsMEdicas(String obsMEdicas) {
+    this.obsMEdicas = obsMEdicas;
+}
+
+
 }

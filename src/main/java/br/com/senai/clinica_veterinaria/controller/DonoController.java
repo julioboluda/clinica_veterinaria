@@ -25,7 +25,7 @@ public class DonoController {
 
     @PostMapping
     public Response agendaDono(@Valid @RequestBody Dono entity) {
-        boolean cpfJaExiste = repository.ExistsByCpf(entity.getCpf());
+        boolean cpfJaExiste = repository.existsByCpf(entity.getCpf());
 
         if (cpfJaExiste) {
             return new Response(409, "Ja existe um dono com esse cpf");

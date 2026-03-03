@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 
@@ -23,8 +25,10 @@ public class Consulta {
     @OneToMany(mappedBy = "consulta")
     private List<VeterinariaConsulta> veterinarioconsultas;
 
-    public Consulta(Long id, LocalDateTime data_hora)
-
+    @ManyToOne
+    @JoinColumn(name = "fk_animal")
+    private Animal animal;
+    
     public Long getId() {
         return id;
     }

@@ -2,7 +2,7 @@ package br.com.senai.clinica_veterinaria.controller;
 
 import java.util.List;
 
-import javax.swing.RepaintManager;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
